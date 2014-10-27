@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="phonecatApp">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
     <title>Home | E-Video games Store</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -13,10 +11,9 @@
     <link href="css/animate.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/responsive.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->       
+	
+	
+	
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
@@ -24,7 +21,9 @@
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
 
-<body>
+<body ng-controller="ProductListCtrl">
+	
+  
 	<header id="header"><!--header-->
 		<div class="header_top"><!--header_top-->
 			<div class="container">
@@ -134,18 +133,46 @@
 							<li data-target="#slider-carousel" data-slide-to="2"></li>
 						</ol>
 						
-						<div class="carousel-inner">
-							<div class="item active">
+						<div class="carousel-inner" ng-repeat="product in products | giveMe4">		
+											
+							<p>{{$index}}</p>							
+							<div ng-if="$index ==0" class="item active">
 								<div class="col-sm-6">
 									<h1><span>E</span>-GAME STORE</h1>
-									<h2>E-GAME STORE</h2>
-									<p>New Video games on sell. </p>
+									<h2>{{product.VideoGameName }}</h2>
+									<p>{{product.description}}</p>
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="images/home/batmanCover1.jpg" class="girl img-responsive" alt="" />
+									<img src={{product.photo}} class="girl img-responsive" alt="" />
 								</div>
 							</div>
+							
+							<div  ng-if="$index ==1" class="item">
+							
+								<div class="col-sm-6">
+									<h1><span>E</span>-GAME STORE</h1>
+									<h2>{{product.VideoGameName}}</h2>
+									<p>{{product.description}}</p>
+									<button type="button" class="btn btn-default get">Get it now</button>
+								</div>
+								<div class="col-sm-6">
+									<img src={{product.photo}} class="girl img-responsive" alt="" />
+								</div>
+							</div>
+							<div  ng-if="$index ==2" class="item">
+								<div class="col-sm-6">
+									<h1><span>E</span>-GAME STORE</h1>
+									<h2>{{product.VideoGameName}}</h2>
+									<p>{{product.description}}</p>
+									<button type="button" class="btn btn-default get">Get it now</button>
+								</div>
+								<div class="col-sm-6">
+									<img src={{product.photo}} class="girl img-responsive" alt="" />
+								</div>
+							</div>
+							
+							<!-- 
 							<div class="item">
 								<div class="col-sm-6">
 									<h1><span>E</span>-SHOPPER</h1>
@@ -170,13 +197,13 @@
 									
 								</div>
 							</div>
-							
+							 -->
 						</div>
 						
-						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+						<a  href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
 							<i class="fa fa-angle-left"></i>
 						</a>
-						<a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+						<a  href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
 							<i class="fa fa-angle-right"></i>
 						</a>
 					</div>
@@ -204,20 +231,22 @@
 							</ul>
 						</div>
 						<div class="tab-content">
-							<div class="tab-pane fade active in" id="tshirt" >
-								<div class="col-sm-3">
+							<div class="tab-pane fade active in" id="tshirt" ng-repeat="product in products  ">
+								
+								<div  class="col-sm-3" >
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="images/home/gallery1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
+												<img src={{product.photo}} alt="" />
+												<h2>{{product.name}}</h2>
+												<p>{{product.price}}</p>
 												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 											</div>
 											
 										</div>
 									</div>
 								</div>
+								<!-- 
 								<div class="col-sm-3">
 									<div class="product-image-wrapper">
 										<div class="single-products">
@@ -257,22 +286,25 @@
 										</div>
 									</div>
 								</div>
+								 -->
 							</div>
 							
-							<div class="tab-pane fade" id="blazers" >
-								<div class="col-sm-3">
+							<div class="tab-pane fade" id="blazers" ng-repeat="product in products">
+								
+								<div  class="col-sm-3" >
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="images/home/gallery4.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
+												<img src={{product.photo}} alt="" />
+												<h2>{{product.name}}</h2>
+												<p>{{product.price}}</p>
 												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 											</div>
 											
 										</div>
 									</div>
 								</div>
+								<!--  
 								<div class="col-sm-3">
 									<div class="product-image-wrapper">
 										<div class="single-products">
@@ -312,22 +344,25 @@
 										</div>
 									</div>
 								</div>
+								 -->
 							</div>
 							
-							<div class="tab-pane fade" id="sunglass" >
-								<div class="col-sm-3">
+							<div class="tab-pane fade" id="sunglass" ng-repeat="product in products ">
+								
+								<div  class="col-sm-3" >
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="images/home/gallery3.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
+												<img src={{product.photo}} alt="" />
+												<h2>{{product.name}}</h2>
+												<p>{{product.price}}</p>
 												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 											</div>
 											
 										</div>
 									</div>
 								</div>
+								<!-- 
 								<div class="col-sm-3">
 									<div class="product-image-wrapper">
 										<div class="single-products">
@@ -367,22 +402,25 @@
 										</div>
 									</div>
 								</div>
+								 -->
 							</div>
 							
-							<div class="tab-pane fade" id="kids" >
-								<div class="col-sm-3">
+							<div class="tab-pane fade" id="kids" ng-repeat="product in products ">
+								
+								<div  class="col-sm-3" >
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="images/home/gallery1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
+												<img src={{product.photo}} alt="" />
+												<h2>{{product.name}}</h2>
+												<p>{{product.price}}</p>
 												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 											</div>
 											
 										</div>
 									</div>
 								</div>
+								<!--
 								<div class="col-sm-3">
 									<div class="product-image-wrapper">
 										<div class="single-products">
@@ -422,22 +460,25 @@
 										</div>
 									</div>
 								</div>
+								 -->
 							</div>
 							
-							<div class="tab-pane fade" id="poloshirt" >
-								<div class="col-sm-3">
+							<div class="tab-pane fade" id="poloshirt" ng-repeat="product in products ">
+								
+								<div  class="col-sm-3" >
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="images/home/gallery2.png" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
+												<img src={{product.photo}} alt="" />
+												<h2>{{product.name}}</h2>
+												<p>{{product.price}}</p>
 												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 											</div>
 											
 										</div>
 									</div>
 								</div>
+								<!-- 
 								<div class="col-sm-3">
 									<div class="product-image-wrapper">
 										<div class="single-products">
@@ -478,6 +519,7 @@
 									</div>
 								</div>
 							</div>
+							 -->
 						</div>
 					</div><!--/category-tab-->
 					
@@ -522,13 +564,15 @@
 	</footer><!--/Footer-->
 	
 
-  
+  <script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="controller.js"></script>
     <script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.scrollUp.min.js"></script>
 	<script src="js/price-range.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/angular3.min.js"></script>
+    
+    
 </body>
 </html>
