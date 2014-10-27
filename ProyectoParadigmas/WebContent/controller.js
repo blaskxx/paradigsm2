@@ -32,7 +32,41 @@ phonecatApp.filter('giveMe4', function () {
             items[j] = temp;
         }
         var filtered = [];
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < 4; i++) {
+            var item = items[i];
+            filtered.push(item);
+        }
+        return filtered;
+    };
+});
+
+phonecatApp.filter('giveMe1', function () {
+    return function (items) {
+    	for (var i = items.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = items[i];
+            items[i] = items[j];
+            items[j] = temp;
+        }
+        var filtered = [];
+        for (var i = 0; i < 1; i++) {
+            var item = items[i];
+            filtered.push(item);
+        }
+        return filtered;
+    };
+});
+
+phonecatApp.filter('giveMe2', function () {
+    return function (items) {
+    	for (var i = items.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = items[i];
+            items[i] = items[j];
+            items[j] = temp;
+        }
+        var filtered = [];
+        for (var i = 0; i < 2; i++) {
             var item = items[i];
             filtered.push(item);
         }
